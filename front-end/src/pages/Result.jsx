@@ -235,7 +235,7 @@ const Result = ({ location, history }) => {
 
   // 전화번호 스타일링
   const CheckPhoneNumber = (tel) => {
-    if (!tel.includes("-")) {
+    if (tel !== null && !tel.includes("-")) {
       switch (tel.length) {
         case 11:
           return `${tel.substring(0, 3)}-${tel.substring(3, 7)}-${tel.substring(
@@ -265,7 +265,7 @@ const Result = ({ location, history }) => {
 
   // 링크 타고 넘어가기
   const onClickLink = (e) => {
-    console.log(e.target.innerText.split("링크: ")[1]);
+    // console.log(e.target.innerText.split("링크: ")[1]);
     if (e.target.innerText !== "링크: ") {
       e.stopPropagation();
       window.open(e.target.innerText.split("링크: ")[1]);
@@ -288,15 +288,17 @@ const Result = ({ location, history }) => {
       c_num: c_num,
       resdate: resdate,
     };
-    console.log("예약 확정이요~", body);
+    // console.log("예약 확정이요~", body);
     axios
       .post("/wherewego/insertRes", body)
       .then((response) => {
-        console.log(response.data);
+        // console.log(response.data);
         alert("예약이 완료되었습니다!");
         history.push("/mypage");
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        // console.log(error)
+      });
   };
 
   return (

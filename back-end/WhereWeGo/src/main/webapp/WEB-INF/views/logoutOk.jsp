@@ -4,6 +4,6 @@
 <c:if test="${logid==null}">
 	<script>
 		alert("로그아웃 성공");
-		location.href="http://192.168.0.63:3000";
+		location.href="http://localhost:3000";
 	</script>
 </c:if>

@@ -85,17 +85,19 @@ const IndividualForm = ({ history }) => {
       axios
         .post("/wherewego/getUserData", body)
         .then((response) => {
-          console.log(response.data);
+          // console.log(response.data);
           setUserData(response.data);
           setIsLoaded(true);
         })
-        .catch((error) => console.log(error));
+        .catch((error) => {
+          // console.log(error)
+        });
     }
   }, []);
 
   useEffect(() => {
     if (isLoaded) {
-      console.log("다 받았으니 세팅하자");
+      // console.log("다 받았으니 세팅하자");
       // 할 일
       // 1. 고정값: 아이디(중복 체크 버튼 제거), 이름, 주민번호
       // 2. 수정 가능 값: 연락처, 이메일, 주소, 우편번호, 상세주소, 기념일, 관심사
@@ -148,8 +150,8 @@ const IndividualForm = ({ history }) => {
 
   // 비밀번호 더블체크
   const checkPwd = (e) => {
-    console.log(e.target.value);
-    console.log(pwd);
+    // console.log(e.target.value);
+    // console.log(pwd);
     if (e.target.value === "") return;
     return pwd === e.target.value ? setIsSame(true) : setIsSame(false);
   };
@@ -163,16 +165,21 @@ const IndividualForm = ({ history }) => {
       : e.target.value;
   };
 
-  const onClickTelCheck = () => {
-    console.log("사용자 입력 넘버", checkNum);
-    axios
-      .post("/wherewego/telcheck", { tel: tel })
-      .then((response) => {
-        console.log(response.data);
-        // 전달받은 데이터의 ranInt === checkNum이면 setCheck true => valid!
-        setRanInt(response.data);
-      })
-      .catch((error) => console.log(error));
+  const onClickTelCheck = async () => {
+    // console.log("사용자 입력 넘버", checkNum);
+    // axios
+    //   .post("/wherewego/telcheck", { tel: tel })
+    //   .then((response) => {
+    //     // console.log(response.data);
+    //     // 전달받은 데이터의 ranInt === checkNum이면 setCheck true => valid!
+    //     setRanInt(response.data);
+    //   })
+    //   .catch((error) => {
+    //     // console.log(error)
+    //   });
+
+    const response = await axios.post("/wherewego/telcheck", { tel: tel });
+    setRanInt(response.data);
   };
 
   useEffect(() => {
@@ -184,24 +191,37 @@ const IndividualForm = ({ history }) => {
   // console.log(checkNum);
   // console.log(ranInt);
 
-  const onClickDoubleCheck = () => {
-    axios
-      .post("/wherewego/idDoubleCheck", { userId: userId })
-      .then((response) => {
-        console.log(response.data);
-        // 결과가 0이 아니면 중복(false)
-        if (response.data === 0) {
-          setidCheck(true);
-          alert(`${userId}를 사용할 수 있습니다!`);
-        } else {
-          setidCheck(false);
-          alert("동일한 아이디가 존재합니다!");
-        }
-      })
-      .catch((error) => console.log(error));
+  const onClickDoubleCheck = async () => {
+    // axios
+    //   .post("/wherewego/idDoubleCheck", { userId: userId })
+    //   .then((response) => {
+    //     // console.log(response.data);
+    //     // 결과가 0이 아니면 중복(false)
+    //     if (response.data === 0) {
+    //       setidCheck(true);
+    //       alert(`${userId}를 사용할 수 있습니다!`);
+    //     } else {
+    //       setidCheck(false);
+    //       alert("동일한 아이디가 존재합니다!");
+    //     }
+    //   })
+    //   .catch((error) => {
+    //     // console.log(error)
+    //   });
+
+    const response = await axios.post("/wherewego/idDoubleCheck", {
+      userId: userId,
+    });
+    if (response.data === 0) {
+      setidCheck(true);
+      alert(`${userId}를 사용할 수 있습니다!`);
+    } else {
+      setidCheck(false);
+      alert("동일한 아이디가 존재합니다!");
+    }
   };
 
-  const onSubmitForm = (e) => {
+  const onSubmitForm = async (e) => {
     e.preventDefault();
 
     if (check && idCheck) {
@@ -220,7 +240,7 @@ const IndividualForm = ({ history }) => {
         startdate: startdate,
         opt: opt.join("#"),
       };
-      console.log("바디", body);
+      // console.log("바디", body);
 
       axios
         .post(url, body)

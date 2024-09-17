@@ -163,7 +163,7 @@ const Reviews = () => {
   const showDetailItem = () => {};
 
   const userId = read_cookie("userId");
-  console.log(userId);
+  // console.log(userId);
 
   return (
     <>
@@ -181,6 +181,7 @@ const Reviews = () => {
         >
           <Slider index={index}>
             {reviewsList.map((review) => {
+              console.log(review.r_num);
               // console.log(review.resdate.split("/"));
               return (
                 <ReviewItem as="li" onClick={showDetailItem}>

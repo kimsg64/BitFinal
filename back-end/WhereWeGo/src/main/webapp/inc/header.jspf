@@ -212,7 +212,7 @@ nav {
 					<a href="/wherewego/">Plan.<span class="point_letter">D</span></a>
 				</c:if>
 				<c:if test="${logid==null}">
-					<a href="http://192.168.0.63:3000">Plan.<span class="point_letter">D</span></a>
+					<a href="http://localhost:3000">Plan.<span class="point_letter">D</span></a>
 				</c:if>
 			</div>
 			<!-- 우측 메뉴 -->
@@ -262,11 +262,11 @@ nav {
 						
 						<c:if test="${logStatus!='B'}">
 							<ul class="submenu no-height2">
-								<li class="submenu-item"><a href="http://192.168.0.63:3000/#/mypage">My Home</a><span class="border-effect"></span></li>
-								<li class="submenu-item"><a href="http://192.168.0.63:3000/#/individualform">Profile</a><span class="border-effect"></span></li> 
+								<li class="submenu-item"><a href="http://localhost:3000/#/mypage">My Home</a><span class="border-effect"></span></li>
+								<li class="submenu-item"><a href="http://localhost:3000/#/individualform">Profile</a><span class="border-effect"></span></li> 
 								<li class="submenu-item"><a href="#">Reviews</a><span class="border-effect"></span></li>
-								<li class="submenu-item"><a href="http://192.168.0.63:3000/#/myhistory">History</a><span class="border-effect"></span></li>
-								<li class="submenu-item"><a href="http://192.168.0.63:3000/#/myrecommendation">Recommendation</a><span class="border-effect"></span></li>
+								<li class="submenu-item"><a href="http://localhost:3000/#/myhistory">History</a><span class="border-effect"></span></li>
+								<li class="submenu-item"><a href="http://localhost:3000/#/myrecommendation">Recommendation</a><span class="border-effect"></span></li>
 							</ul>
 						</c:if>
 					</div>
@@ -276,7 +276,7 @@ nav {
 						<a href="/wherewego/logout" onclick='SetCookie("b_id",null,null)'>Logout</a>
 					</c:if>
 					<c:if test="${logid==null} or ${log }">
-						<a href="http://192.168.0.63:3000/#/login">Login</a>
+						<a href="http://localhost:3000/#/login">Login</a>
 					</c:if>
 	            </div>
 	          </div>

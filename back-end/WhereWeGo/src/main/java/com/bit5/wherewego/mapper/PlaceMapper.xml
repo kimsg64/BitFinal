@@ -7,7 +7,7 @@
 	<select id="placeAllSelect" resultType="com.bit5.wherewego.place.PlaceVO">
 		select * from 
 		(select * from 
-		(select pcode, datesort, name, nvl(time,'없음') time, link, addr,grade from place
+		(select pcode, datesort, name, nvl(time,'없음') time, link, addr, grade from place
 		<if test='param4!=null and !param4.equals("")'>
 		where ${param3} like '%'||#{param4}||'%' 
 		</if>	

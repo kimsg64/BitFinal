@@ -40,7 +40,7 @@ const HalfBox = styled.div`
 
 const Stars = ({ score = 1, setScore = () => {}, isEditable = false }) => {
   useEffect(() => {}, [score]);
-  console.log(score);
+  // console.log(score);
   const onChangeScore = (e) => {
     setScore(e.target.value);
   };

@@ -105,6 +105,13 @@ public class CourseController {
 	public ModelAndView inserPlace(@RequestBody CourseVO vo) {
 		ModelAndView mav = new ModelAndView();
 		
+		System.out.println(vo.getName());
+		System.out.println(vo.getUserid());
+		System.out.println(vo.getSortstring());
+		System.out.println(vo.getStname());
+		System.out.println(vo.getInfo());
+		System.out.println(vo.getOpt());
+		
 		CourseDAOImp dao = sqlSession.getMapper(CourseDAOImp.class);
 		int cnt = dao.checkCourse(vo); //중복여부 확인
 		System.out.println("중복일까아닐깜"+cnt);

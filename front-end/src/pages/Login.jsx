@@ -115,7 +115,7 @@ const Login = ({ history }) => {
     delete_cookie("b_id");
     // console.log(classification);
     // console.log(keepSession);
-    console.log(userId);
+    // console.log(userId);
 
     const url =
       classification === "individual"
@@ -132,16 +132,16 @@ const Login = ({ history }) => {
             b_id: userId,
             pwd: pwd,
           };
-    console.log(body);
+    // console.log(body);
 
     axios
       .post(url, body)
       .then((response) => {
-        console.log("response : ", response.data);
+        // console.log("response : ", response.data);
         if (response.data > 0) {
           // 그냥 경고 띄우기용
           setIsSucceeded(true);
-          console.log("ㅜㅜ");
+          // console.log("ㅜㅜ");
           // 로그인 성공시 쿠키 설정 후 다시 백으로 보내서 세션에 등록
           if (classification === "individual") {
             // ★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
@@ -159,14 +159,14 @@ const Login = ({ history }) => {
               res.data ? history.push("/memberhome") : alert("로그인 실패...");
             });
           } else {
-            console.log("흐허허...");
+            // console.log("흐허허...");
             // 일반 사용자는 삭제
             delete_cookie("userId");
             // 사업자
             bake_cookie("b_id", userId);
 
             // 쿠키 들어갔는지 확인
-            console.log(read_cookie("b_id"));
+            // console.log(read_cookie("b_id"));
 
             // axios.get("/wherewego/business/checkSession").then((res) => {
             //   console.log("세션 체크 결과", res.data);
@@ -179,7 +179,7 @@ const Login = ({ history }) => {
             axios
               .post("/wherewego/business/checkSession", { userId: userId })
               .then((res) => {
-                console.log(res.data);
+                // console.log(res.data);
                 window.location.href =
                   "http://192.168.0.63:9090/wherewego/business/gohome";
                 // "http://localhost:9090/wherewego/business/gohome";

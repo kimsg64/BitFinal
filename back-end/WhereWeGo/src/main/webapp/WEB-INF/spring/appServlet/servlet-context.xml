@@ -42,9 +42,9 @@
 		<beans:property name="driverClassName"
 			value="oracle.jdbc.driver.OracleDriver"></beans:property>
 		<beans:property name="url"
-			value="jdbc:oracle:thin:@bitcamp4.iptime.org:1521:XE"></beans:property>
-		<beans:property name="username" value="c##Bit05"></beans:property>
-		<beans:property name="password" value="Bit05"></beans:property>
+			value="jdbc:oracle:thin:@localhost:1521:XE"></beans:property>
+		<beans:property name="username" value="c##scott"></beans:property>
+		<beans:property name="password" value="tiger"></beans:property>
 	</beans:bean>
 
 	<!-- Mybatis Framework을 사용할 때 필요한 DataSource객체와 xml 매핑 파일 위치를 이용하여 SqlSessionFactory객체를 

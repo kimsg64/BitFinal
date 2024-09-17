@@ -281,14 +281,14 @@ const UserRecommendation = ({ history, userCourseData = [] }) => {
     axios
       .post("/wherewego/checkCourse", body)
       .then((response) => {
-        // console.log(response);
+        console.log(response);
         alert(
           "해당 코스는 관리자의 심사를 거친 후 등록 여부가 결정되기까지 수 일이 소요됩니다."
         );
         return history.push("/mypage");
       })
       .catch((error) => {
-        // console.log(error);
+        console.log(error);
         alert("신규 코스 등록 신청에 실패했습니다... ");
       });
   };
@@ -335,7 +335,9 @@ const UserRecommendation = ({ history, userCourseData = [] }) => {
           setShowModalResult(true);
           setSearchedPlace(chosen);
         })
-        .catch((error) => console.log(error));
+        .catch((error) => {
+          // console.log(error)
+        });
     }
   };
   // console.log("검색 결과: ", searchedPlace);
@@ -373,9 +375,9 @@ const UserRecommendation = ({ history, userCourseData = [] }) => {
     }
   };
 
-  console.log(pcode1);
-  console.log(pcode2);
-  console.log(pcode3);
+  // console.log(pcode1);
+  // console.log(pcode2);
+  // console.log(pcode3);
 
   // ★★★★★★ 6. 모달 창 셀렉트 결과로 pcode셋팅
   const onClickItem = (e) => {
@@ -424,7 +426,7 @@ const UserRecommendation = ({ history, userCourseData = [] }) => {
     // console.log(selectedSort);
     // console.log(clickedPlace);
     // console.log(clickedPlaceAddr);
-    console.log(clickedPlaceTel);
+    // console.log(clickedPlaceTel);
     selectedPcode === ""
       ? alert("순서를 선택해 주세요!")
       : selectedSort === ""
@@ -434,7 +436,7 @@ const UserRecommendation = ({ history, userCourseData = [] }) => {
       : addPlace();
 
     // 2. 일치하는 인풋 박스에 값 입력하기
-    console.log(selectedPcode);
+    // console.log(selectedPcode);
   };
   // 장소 추가하기
   const addPlace = () => {
@@ -444,11 +446,11 @@ const UserRecommendation = ({ history, userCourseData = [] }) => {
       addr: clickedPlaceAddr,
       tel: clickedPlaceTel,
     };
-    console.log("장소 등록시 보낼 바디", body);
+    // console.log("장소 등록시 보낼 바디", body);
     axios
       .post("/wherewego/checkPlace", body)
       .then((response) => {
-        console.log(response);
+        // console.log(response);
         alert(`${clickedPlace}을(를) 새로운 장소로 등록했습니다.`);
         // p코드 등록
         // selectedPcode === "pcode1"
@@ -472,7 +474,7 @@ const UserRecommendation = ({ history, userCourseData = [] }) => {
         setShowModal(false);
       })
       .catch((error) => {
-        console.log(error);
+        // console.log(error);
         alert("장소 등록에 실패했습니다 ㅜㅜ");
       });
   };
